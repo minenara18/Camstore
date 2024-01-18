@@ -2,10 +2,10 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-      <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-camera"></i>
-      </div>
-      <div class="sidebar-brand-text mx-3">Camstore <sup>2</sup></div>
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-box"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Inventory</div>
     </a>
 
     <!-- Divider -->
@@ -13,9 +13,9 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('dashboard') }}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
+        <a class="nav-link" href="{{ route('dashboard') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
     </li>
 
     <li class="nav-item">
@@ -25,22 +25,21 @@
         </a>
     </li>
 
-      @if (auth()->user()->level == 'Admin')
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('kategori.index') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Kategori</span>
-        </a>
-    </li>
-
-      @endif
+    @if (auth()->user()->level == 'Admin')
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('kategori.index') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Kategori</span>
+            </a>
+        </li>
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
-      <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
-  </ul>
+</ul>

@@ -43,6 +43,8 @@ Route::middleware('auth')->group(function () {
 
 
         Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
-        Route::get('/transaksi/create', [TransaksiController::class, 'create'])->name('transaksi.create'); // Tambahkan rute untuk halaman pembuatan transaksi baru
+        Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
+        Route::get('/transaksi/create', [TransaksiController::class, 'create'])->name('transaksi.create');
+
 
 });

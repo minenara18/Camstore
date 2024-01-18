@@ -3,7 +3,7 @@
 @section('title', 'Create Transaksi')
 
 @section('contents')
-<form action="{{ isset($transaksi) ? route('transaksi.', $transaksi->id) : route('transaksi.create.simpan') }}" method="POST">
+<form action="{{ route('transaksi.store') }}" method="POST">
     @csrf
 
     <div class="mb-3">

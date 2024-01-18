@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kategori;
+use App\Models\Barang;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -44,8 +45,10 @@ class KategoriController extends Controller
     {
         // Lakukan logika penghapusan kategori berdasarkan $id
         $kategori = Kategori::findOrFail($id);
+        $kategori->barangs()->delete();
         $kategori->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Kategori berhasil dihapus');
     }
+
 }
