@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::prefix('kategori')->group(function () {
-        Route::get('index', [KategoriController::class, 'index'])->name('kategori.index');
+        Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
         Route::get('tambah', [KategoriController::class, 'tambah'])->name('kategori.tambah');
         Route::post('tambah', [KategoriController::class, 'simpan'])->name('kategori.tambah.simpan');
         Route::get('edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
@@ -42,9 +42,9 @@ Route::middleware('auth')->group(function () {
     });
 
 
-        Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
-        Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
-        Route::get('/transaksi/create', [TransaksiController::class, 'create'])->name('transaksi.create');
+    Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
+    Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
+    Route::get('/transaksi/create', [TransaksiController::class, 'create'])->name('transaksi.create');
 
 
 });

@@ -10,45 +10,62 @@ class KategoriController extends Controller
 {
 	public function index()
 	{
-		$kategori = Kategori::get();
+		$kategori = Kategori::all();
 
-		return view('kategori/index', ['kategori' => $kategori]);
+		return view('kategori/index', [
+            'kategori' => $kategori,
+            'title' => 'kategori'
+        ]);
 	}
 
 	public function tambah()
 	{
-		return view('kategori.form');
+		return view('kategori.form', [
+            'title' => 'Tambah Kategori'
+        ]);
+
+        return redirect()->route('kategori.index');
 	}
 
 	public function simpan(Request $request)
 	{
-		Kategori::create(['nama' => $request->nama]);
+        $data = $request->all();
+		Kategori::create([
+            'nama' => $request->nama
+        ]);
+        Kategori::create($data);
 
-		return redirect()->route('kategori');
-	}
+        return redirect()->route('kategori.index');
+    }
 
 	public function edit($id)
 	{
-		$kategori = Kategori::find($id)->first();
+		$kategori = Kategori::find($id);
 
-		return view('kategori.form', ['kategori' => $kategori]);
+		return view('kategori.form', [
+            'kategori' => $kategori,
+            'title' => 'Edit barang'
+        ]);
 	}
 
 	public function update($id, Request $request)
 	{
-		Kategori::find($id)->update(['nama' => $request->nama]);
+        $data = $request->all();
+		$kategori = Kategori::find($id);
+
+        Kategori::create($data);
+        if (!$kategori) {
+        return redirect()->back()->with('error', 'Kategori tidak ditemukan');
+    }
 
 		return redirect()->route('kategori');
 	}
 
     public function hapus($id)
     {
-        // Lakukan logika penghapusan kategori berdasarkan $id
-        $kategori = Kategori::findOrFail($id);
-        $kategori->barangs()->delete();
-        $kategori->delete();
+        Kategori::findOrFail($id)->delete();
 
-        return redirect()->back()->with('success', 'Kategori berhasil dihapus');
+        return redirect()->back();
     }
 
 }
